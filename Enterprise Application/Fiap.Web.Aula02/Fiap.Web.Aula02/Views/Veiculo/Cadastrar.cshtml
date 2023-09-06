@@ -1,0 +1,35 @@
+﻿@model Veiculo
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastro</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Modelo">Modelo</label>
+        <input asp-for="Modelo" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Marca">Marca</label>
+        <input asp-for="Marca" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Km">KM</label>
+        <input asp-for="Km" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Ano">Ano</label>
+        <input asp-for="Ano" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Placa">Placa</label>
+        <input asp-for="Placa" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Disponivel">Disponivel</label>
+        <input asp-for="Disponivel" class="form-check" />
+    </div>
+
+    <button>Cadastrar</button>
+</form>

@@ -1,0 +1,13 @@
+﻿@model Veiculo;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Veiculos Cadastrados</h1>
+
+@if(Model != null) {
+    <ul>
+        <li>@Model.Modelo</li>
+        <li>@Model.Marca</li>
+    </ul>
+}
