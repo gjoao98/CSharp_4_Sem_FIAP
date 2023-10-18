@@ -4,6 +4,7 @@ using Fiap.Web.Aula03.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fiap.Web.Aula03.Migrations
 {
     [DbContext(typeof(StreamingContext))]
-    partial class StreamingContextModelSnapshot : ModelSnapshot
+    [Migration("20231018233111_churros")]
+    partial class churros
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,7 +50,7 @@ namespace Fiap.Web.Aula03.Migrations
 
                     b.HasKey("AtorId");
 
-                    b.ToTable("Tb_Ator");
+                    b.ToTable("Tb_Atores");
                 });
 
             modelBuilder.Entity("Fiap.Web.Aula03.Models.Filme", b =>
@@ -106,7 +109,7 @@ namespace Fiap.Web.Aula03.Migrations
 
                     b.HasIndex("AtorId");
 
-                    b.ToTable("Tb_Filme_Ator");
+                    b.ToTable("TB_FILME_ATOR");
                 });
 
             modelBuilder.Entity("Fiap.Web.Aula03.Models.Presidente", b =>
@@ -127,7 +130,7 @@ namespace Fiap.Web.Aula03.Migrations
 
                     b.HasKey("PresidenteId");
 
-                    b.ToTable("Tb_Presidente");
+                    b.ToTable("TB_PRESIDENTE");
                 });
 
             modelBuilder.Entity("Fiap.Web.Aula03.Models.Produtora", b =>
@@ -156,7 +159,7 @@ namespace Fiap.Web.Aula03.Migrations
 
                     b.HasIndex("PresidenteId");
 
-                    b.ToTable("Tb_Produtora");
+                    b.ToTable("TB_PRODUTORA");
                 });
 
             modelBuilder.Entity("Fiap.Web.Aula03.Models.Filme", b =>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/ufCtBRXvCBPMrp7zOOMPE79hTOeXfsA611xs6flsLQu49GycXXUbXjbGYSBraf0q0eIqyPZtm/hoDZeHNoUUg==",
+  "dgSpecHash": "uYdKJnx1hlRzlvqyO6erIbKdmf2PrwG7JS/47Dsr0iQOLKhxSCZNs/63RCyQzJWG1XUsa8UCKDCMq26Zap7gsQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\logonrmlocal\\Desktop\\2TDST\\Fiap.Web.Aula03\\Fiap.Web.Aula03\\Fiap.Web.Aula03.csproj",
+  "projectFilePath": "C:\\Users\\logonrmlocal\\Desktop\\CSharp_4_Sem_FIAP\\Enterprise Application\\Fiap.Web.Aula03\\Fiap.Web.Aula03\\Fiap.Web.Aula03.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\logonrmlocal\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\logonrmlocal\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
