@@ -1,0 +1,44 @@
+﻿@model List<Produtora>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Produtoras</h1>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+<a asp-action="cadastrar">Cadastrar</a>
+
+<table class="table table-striped">
+    <tr>
+        <th>Produtora</th>
+        <th>Prêmios</th>
+        <th>Presidente</th>
+        <th>Data Nascimento</th>
+        <th>Ativo</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.Premios</td>
+            <td>@item.Presidente.Nome</td>
+            <td>@item.Presidente.DataNascimento.ToShortDateString()</td>
+            <td>@(item.Ativo ? "Sim" : "Não")</td>
+            <td>
+                <a asp-action="editar" asp-route-id="@item.ProdutoraId" class="btn btn-sm btn-outline-dark">Editar</a>
+                <button onclick="churros.value = @item.ProdutoraId" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Excluir
+                </button>
+            </td>
+        </tr>
+    }
+</table>

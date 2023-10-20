@@ -1,6 +1,7 @@
 ﻿using Fiap.Web.Aula03.DataBase;
 using Fiap.Web.Aula03.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Fiap.Web.Aula03.Controllers
 {
@@ -12,6 +13,28 @@ namespace Fiap.Web.Aula03.Controllers
         public FilmeController(StreamingContext context)
         {
             _context = context;
+        }
+
+        public IActionResult Index(string termoBusca)
+        {
+            var lista = _context.Filmes.Where(f => f.Titulo.Contains(termoBusca) || termoBusca == null).ToList();
+            return View(lista);
+        }
+
+        [HttpGet]
+        public IActionResult Cadastrar()
+        {
+            ViewBag.produtoras = new SelectList(_context.Produtoras, "ProdutoraId", "Nome");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Cadastrar(Filme filme)
+        {
+            _context.Filmes.Add(filme);
+            _context.SaveChanges();
+            TempData["msg"] = "Filme registrado!";
+            return RedirectToAction("Cadastrar");
         }
 
         [HttpGet]
@@ -34,28 +57,6 @@ namespace Fiap.Web.Aula03.Controllers
             //Redirecionar para a listagem
             return RedirectToAction("Index");
         }
-
-        public IActionResult Index(string termoBusca)
-        {
-            var lista = _context.Filmes.Where(f => f.Titulo.Contains(termoBusca) || termoBusca == null).ToList();
-            return View(lista);
-        }
-
-        [HttpGet]
-        public IActionResult Cadastrar()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Cadastrar(Filme filme)
-        {
-            _context.Filmes.Add(filme);
-            _context.SaveChanges();
-            TempData["msg"] = "Filme registrado!";
-            return RedirectToAction("Cadastrar");
-        }
-
 
         [HttpPost]
         public IActionResult Remover(int id)

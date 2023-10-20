@@ -10,6 +10,7 @@ namespace Fiap.Web.Aula03.Models
         public int ProdutoraId { get; set; }
         [Required]
         public string? Nome { get; set; }
+        [Display(Name = "Prêmios")]
         public int Premios { get; set;}
         public bool Ativo { get; set; }
 
