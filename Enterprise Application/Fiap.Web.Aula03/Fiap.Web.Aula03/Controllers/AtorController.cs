@@ -12,9 +12,11 @@ namespace Fiap.Web.Aula03.Controllers
             _context = context; 
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string nome)
         {
-            var lista = _context.Atores.ToList();
+            var lista = _context.Atores
+                .Where(a => a.Nome.Contains(nome) || nome == null)
+                .ToList();
             return View(lista);
         }
 
@@ -30,7 +32,7 @@ namespace Fiap.Web.Aula03.Controllers
             _context.Atores.Add(ator);
             _context.SaveChanges();
             TempData["msg"] = "Ator Cadastrado";
-            return RedirectToAction("Cadastrar");
+            return RedirectToAction("Index");
         }
     }
 }

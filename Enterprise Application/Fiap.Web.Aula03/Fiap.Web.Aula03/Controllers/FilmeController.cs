@@ -2,6 +2,8 @@
 using Fiap.Web.Aula03.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Client;
 
 namespace Fiap.Web.Aula03.Controllers
 {
@@ -15,16 +17,25 @@ namespace Fiap.Web.Aula03.Controllers
             _context = context;
         }
 
-        public IActionResult Index(string termoBusca)
+        private void CarregarProdutoras()
         {
-            var lista = _context.Filmes.Where(f => f.Titulo.Contains(termoBusca) || termoBusca == null).ToList();
+            var lista = _context.Produtoras.ToList();
+            ViewBag.produtoras = new SelectList(lista, "ProdutoraId", "Nome");
+        }
+
+        public IActionResult Index(string titulo)
+        {
+            var lista = _context.Filmes
+                .Where(f => f.Titulo.Contains(titulo) || titulo == null)
+                .Include(p => p.Produtora)
+                .ToList();
             return View(lista);
         }
 
         [HttpGet]
         public IActionResult Cadastrar()
         {
-            ViewBag.produtoras = new SelectList(_context.Produtoras, "ProdutoraId", "Nome");
+            CarregarProdutoras();
             return View();
         }
 
@@ -40,6 +51,7 @@ namespace Fiap.Web.Aula03.Controllers
         [HttpGet]
         public IActionResult Editar(int id)
         {
+            CarregarProdutoras();
             //Pesquisar o filme pelo Id
             var filme = _context.Filmes.Find(id);
             //Retorar a view com o objeto filme
