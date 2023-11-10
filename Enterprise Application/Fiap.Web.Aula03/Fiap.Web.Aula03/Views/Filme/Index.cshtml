@@ -1,7 +1,7 @@
 ﻿@model List<Filme>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Filmes";
 }
 
 <h1>Filmes</h1>
@@ -21,7 +21,7 @@
                     <a asp-action="Cadastrar" asp-controller="Filme" class="btn btn-success">Cadastro de Filmes</a>
                 </div>
                 <div class="col-4">
-                    <input type="text" name="titulo" class="form-control" placeholder="Buscar por Título" />
+                    <input type="text" name="filme" class="form-control" placeholder="Buscar por Título" />
                 </div>
                 <div class="col-4">
                     <button class="btn btn-primary" type="submit">Pesquisar</button>
@@ -31,7 +31,6 @@
     </div>
 </div>
 
-<a asp-action="cadastrar">Cadastrar</a>
 <table class="table table-striped">
     <tr>
         <th>Título</th>
@@ -65,9 +64,10 @@
             <td>@(item.Disponivel?"Sim":"Não")</td>
             <td>
                 <a asp-action="editar" asp-route-id="@item.FilmeId" class="btn btn-sm btn-outline-dark">Editar</a>
-                <button onclick="churros.value = @item.FilmeId" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button onclick="churros.value = @item.FilmeId" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Excluir
                 </button>
+                <a asp-action="detalhes" asp-route-id="@item.FilmeId" class="btn btn-sm btn-outline-primary">Detalhes</a>
             </td>
         </tr>
     }

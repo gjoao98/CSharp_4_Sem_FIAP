@@ -11,7 +11,6 @@ namespace Fiap.Web.Aula03.Controllers
     {        
         private StreamingContext _context;
 
-        //O contexto é injetado no construtor
         public FilmeController(StreamingContext context)
         {
             _context = context;
@@ -23,10 +22,10 @@ namespace Fiap.Web.Aula03.Controllers
             ViewBag.produtoras = new SelectList(lista, "ProdutoraId", "Nome");
         }
 
-        public IActionResult Index(string titulo)
+        public IActionResult Index(string filme)
         {
             var lista = _context.Filmes
-                .Where(f => f.Titulo.Contains(titulo) || titulo == null)
+                .Where(f => f.Titulo.Contains(filme) || filme == null)
                 .Include(p => p.Produtora)
                 .ToList();
             return View(lista);
@@ -52,21 +51,16 @@ namespace Fiap.Web.Aula03.Controllers
         public IActionResult Editar(int id)
         {
             CarregarProdutoras();
-            //Pesquisar o filme pelo Id
             var filme = _context.Filmes.Find(id);
-            //Retorar a view com o objeto filme
             return View(filme);
         }
 
         [HttpPost]
         public IActionResult Editar(Filme filme)
         {
-            //Atualizar o filme no banco de dados
             _context.Filmes.Update(filme);
             _context.SaveChanges();
-            //Enviar uma para a view
             TempData["msg"] = "Filme atualizado!";
-            //Redirecionar para a listagem
             return RedirectToAction("Index");
         }
 
@@ -78,6 +72,17 @@ namespace Fiap.Web.Aula03.Controllers
             _context.SaveChanges();
             TempData["msg"] = "Filme removido";
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Detalhes(int id)
+        {
+            var atores = _context.Atores.ToList();
+            ViewBag.atores = atores;
+            var filme = _context.Filmes
+                .Include(p => p.Produtora)
+                .First(f => f.FilmeId == id);
+            return View(filme);
         }
     }
 }

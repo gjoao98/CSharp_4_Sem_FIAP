@@ -1,10 +1,10 @@
 ﻿@model List<Ator>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Atores";
 }
 
-<h1>Index</h1>
+<h1>Atores</h1>
 
 @if (TempData["msg"] != null)
 {
@@ -22,7 +22,7 @@
                     <a asp-action="Cadastrar" asp-controller="Ator" class="btn btn-success">Cadastro de Atores</a>
                 </div>
                 <div class="col-4">
-                    <input type="text" name="nome" class="form-control" placeholder="Buscar por Nome" />
+                    <input type="text" name="ator" class="form-control" placeholder="Buscar por Atores" />
                 </div>
                 <div class="col-4">
                     <button class="btn btn-primary" type="submit">Pesquisar</button>
@@ -32,7 +32,6 @@
     </div>
 </div>
 
-<a asp-action="cadastrar">Cadastrar</a>
 <table class="table table-striped">
     <tr>
         <th>Nome</th>
@@ -59,7 +58,7 @@
                 <td>@(item.Premiado ? "Sim" : "Não")</td>
                 <td>
                     <a asp-action="editar" asp-route-id="@item.AtorId" class="btn btn-sm btn-outline-dark">Editar</a>
-                    <button onclick="churros.value = @item.AtorId" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button onclick="churros.value = @item.AtorId" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Excluir
                     </button>
                 </td>

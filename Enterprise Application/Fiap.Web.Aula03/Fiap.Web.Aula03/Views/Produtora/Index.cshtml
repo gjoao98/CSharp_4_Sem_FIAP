@@ -1,7 +1,7 @@
 ﻿@model List<Produtora>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Produtoras";
 }
 
 <h1>Produtoras</h1>
@@ -12,8 +12,25 @@
         @TempData["msg"]
     </div>
 }
+<div class="card">
+    <div class="card-header">Pesquisar Produtoras</div>
+    <div class="card-body">
+        <form asp-action="Index" asp-controller="Produtora" method="get">
+            <div class="row">
+                <div class="col-4">
+                    <a asp-action="Cadastrar" asp-controller="Produtora" class="btn btn-success">Cadastro de Produtoras</a>
+                </div>
+                <div class="col-4">
+                    <input type="text" name="produtora" class="form-control" placeholder="Buscar por Produtora" />
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary" type="submit">Pesquisar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
-<a asp-action="cadastrar">Cadastrar</a>
 
 <table class="table table-striped">
     <tr>
@@ -35,7 +52,7 @@
             <td>@(item.Ativo ? "Sim" : "Não")</td>
             <td>
                 <a asp-action="editar" asp-route-id="@item.ProdutoraId" class="btn btn-sm btn-outline-dark">Editar</a>
-                <button onclick="churros.value = @item.ProdutoraId" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button onclick="churros.value = @item.ProdutoraId" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Excluir
                 </button>
             </td>

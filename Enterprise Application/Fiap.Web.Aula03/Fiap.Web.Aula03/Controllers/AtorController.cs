@@ -12,10 +12,10 @@ namespace Fiap.Web.Aula03.Controllers
             _context = context; 
         }
 
-        public IActionResult Index(string nome)
+        public IActionResult Index(string ator)
         {
             var lista = _context.Atores
-                .Where(a => a.Nome.Contains(nome) || nome == null)
+                .Where(a => a.Nome.Contains(ator) || ator == null)
                 .ToList();
             return View(lista);
         }

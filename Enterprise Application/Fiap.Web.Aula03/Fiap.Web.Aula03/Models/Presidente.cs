@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fiap.Web.Aula03.Models
@@ -6,7 +7,7 @@ namespace Fiap.Web.Aula03.Models
     [Table("Tb_Presidente")]
     public class Presidente
     {
-        [Column("Id")]
+        [Column("Id"), HiddenInput]
         public int PresidenteId { get; set; }
         [Required]
         public string? Nome { get; set; }

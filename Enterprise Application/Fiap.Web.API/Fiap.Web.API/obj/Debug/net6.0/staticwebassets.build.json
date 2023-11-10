@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "PgYix/63KHPBRWdBzwYYaMfLs/+OZdaRClNmHBzajOY=",
+  "Source": "Fiap.Web.API",
+  "BasePath": "_content/Fiap.Web.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
